@@ -1,5 +1,9 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
-
+// Ruteo
+import { RouterLink } from "@angular/router";
+// Importando Material y Common aquí usando pra ngFor
+import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 // Tipar los objetos que están en el array, para declarar las propiedades que tendrán.
 interface TrashBag {
@@ -15,7 +19,7 @@ interface Fish {
 
 @Component({
   selector: 'app-juego',
-  imports: [],
+  imports: [CommonModule, MatIconModule],
   templateUrl: './juego.component.html',
   styleUrl: './juego.component.css'
 })

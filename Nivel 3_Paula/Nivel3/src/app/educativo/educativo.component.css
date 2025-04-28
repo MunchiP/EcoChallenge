@@ -11,6 +11,7 @@
 h1{
     font-family: "Englebert", cursive;
     color: rgb(60, 180, 180);
+    font-size: 3rem;
 }
 .englebert-regular {
     font-family: "Englebert", cursive;
@@ -20,27 +21,51 @@ h1{
 
   p{
     font-family: 'Englebert';
-    font-size: 20px;
+    font-size: 1.5rem;
   }
 
   /* Iconos de audio Angular - Material */
   .AudiosIconos{
-    font-size: 55px;
+    width: 50px;
+    height: 50px;
     color: rgb(71, 251, 179);
+    background-color: blue;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btnJuego{
+    width: 180px;
+    height: 90px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(44, 188, 154);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
   }
 
   /* // Formas de estilo para la primera parte */
 
   /* Estilos de división general */
 
-
   .ContenidoGeneral{
     display: flex;
+    justify-content: center;
+  }
+
+  .ContenidoIzquierdo{
+    margin-right: 3rem;
+    background-color: rgba(68, 255, 0, 0.253);
+  }
+
+  .ContenidoDerecho{
+    background-color: rgba(255, 0, 187, 0.171);
   }
 
   .ContenidoIzquierdo .ContenidoDerecho{
-    flex: 1;
-    padding: 1rem;
+    flex: 1 1 auto;
   }
 
   .izquierda , .derecha{
@@ -53,10 +78,6 @@ h1{
     justify-content: center;
     align-items: center;
     width: 850px;
-  }
-
-  .InfoUno{
-    background-color: rgb(0, 102, 255);
   }
 
   .GifLow{
@@ -73,4 +94,38 @@ h1{
 
   .GifLow.Escena3{
     height: 350px;
+  }
+
+
+  /* Responsive para tablets */
+
+  @media (min-width: 600px) and (max-width: 991px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    p {
+      font-size: 1.4rem;
+    }
+  
+    .ContenidoGeneral {
+      flex-direction: column; 
+    }
+  
+    .ContenidoIzquierdo,
+    .ContenidoDerecho {
+      flex: 1 1 auto; 
+    }
+  
+    .InfoUno,
+    .InfoDos,
+    .InfoTres {
+      flex-direction: column; 
+      width: 95%;
+      margin: 1rem auto;
+    }
+  
+    .GifLow {
+      max-height: 300px;
+    }
   }
