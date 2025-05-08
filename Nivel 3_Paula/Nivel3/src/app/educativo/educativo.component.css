@@ -1,0 +1,131 @@
+/* .Importo la fuente de google fonts */
+
+.Titulo
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1{
+    font-family: "Englebert", cursive;
+    color: rgb(60, 180, 180);
+    font-size: 3rem;
+}
+.englebert-regular {
+    font-family: "Englebert", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  p{
+    font-family: 'Englebert';
+    font-size: 1.5rem;
+  }
+
+  /* Iconos de audio Angular - Material */
+  .AudiosIconos{
+    width: 50px;
+    height: 50px;
+    color: rgb(71, 251, 179);
+    background-color: blue;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btnJuego{
+    width: 180px;
+    height: 90px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(44, 188, 154);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* // Formas de estilo para la primera parte */
+
+  /* Estilos de división general */
+
+  .ContenidoGeneral{
+    display: flex;
+    justify-content: center;
+  }
+
+  .ContenidoIzquierdo{
+    margin-right: 3rem;
+    background-color: rgba(68, 255, 0, 0.253);
+  }
+
+  .ContenidoDerecho{
+    background-color: rgba(255, 0, 187, 0.171);
+  }
+
+  .ContenidoIzquierdo .ContenidoDerecho{
+    flex: 1 1 auto;
+  }
+
+  .izquierda , .derecha{
+    flex: 1;
+    padding: 1rem;
+  }
+
+  .InfoUno , .InfoDos , .InfoTres{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 850px;
+  }
+
+  .GifLow{
+    height: 400px;
+  }
+
+  .GifLow.Escena1{
+    height: 250px;
+  }
+
+  .GifLow.Escena2{
+    height: 350px;
+  }
+
+  .GifLow.Escena3{
+    height: 350px;
+  }
+
+
+  /* Responsive para tablets */
+
+  @media (min-width: 600px) and (max-width: 991px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  
+    p {
+      font-size: 1.4rem;
+    }
+  
+    .ContenidoGeneral {
+      flex-direction: column; 
+    }
+  
+    .ContenidoIzquierdo,
+    .ContenidoDerecho {
+      flex: 1 1 auto; 
+    }
+  
+    .InfoUno,
+    .InfoDos,
+    .InfoTres {
+      flex-direction: column; 
+      width: 95%;
+      margin: 1rem auto;
+    }
+  
+    .GifLow {
+      max-height: 300px;
+    }
+  }

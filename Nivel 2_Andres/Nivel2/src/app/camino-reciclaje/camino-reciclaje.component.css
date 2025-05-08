@@ -1,0 +1,212 @@
+/* Importar fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Variables de Color y Fuentes */
+:host {
+  --fuente-principal: 'Poppins', sans-serif;
+}
+
+.contenedor-principal {
+  background-color: #368b2b;
+  position: relative;
+}
+
+
+.gif {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  z-index: 10;
+  background-image: url('../assets/juego/Hip-hop_c.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  left: 1290px;
+  top: 80px;
+}
+
+.game-wrapper {
+  position: absolute;
+  width: 300px;
+  left: 480px;
+  top: -41px;
+  padding: 20px 20px;
+}
+
+/* Estilo para el título */
+.game-wrapper h1 {
+  color: #328527;
+  margin-bottom: 15px;
+  text-align: center;
+  font-family: var(--fuente-principal);
+  background-color: rgba(255, 255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+
+
+.informativo {
+  position: absolute;
+  width: 200px;
+  left: 1292px;
+  top: 420px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.informativo p {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #0c0c0c;
+  font-family: var(--fuente-principal);
+}
+
+.boton-nivel3 {
+  position: absolute;
+  left: 1300px;
+  top: 645px;
+}
+
+.boton-nivel3 button {
+  padding: 0.8em 1.5em;
+  font-size: 1.2em;
+  border-radius: 18px;
+  background: linear-gradient(45deg, #1ee20d, #0c97e7);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  font-family: var(--fuente-principal);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.boton-nivel3 button:not(:disabled) {
+  background: linear-gradient(45deg,#103e58, #093a04 );
+  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
+}
+
+.boton-nivel3 button:active:not(:disabled) {
+  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
+}
+
+
+.personaje {
+  position: absolute;
+  width: 200px;
+  /* Asegúrate de que estas dimensiones estén definidas para el div */
+  height: 200px;
+  /* Asegúrate de que estas dimensiones estén definidas para el div */
+  z-index: 10;
+  /* AÑADE ESTAS PROPIEDADES PARA MOSTRAR LA IMAGEN DEL PERSONAJE */
+  background-image: url('../assets/juego/chica-final.png');
+  /* Usa la ruta correcta a tu personaje */
+  background-size: contain;
+  /* O 'cover', dependiendo de cómo quieras que se ajuste */
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Centra la imagen dentro del div */
+}
+
+.basura {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 5;
+  object-fit: contain;
+}
+
+
+.clas-canecas {
+  position: absolute;
+  top: 200px;
+  left: 940px;
+  text-align: center;
+  font-size: 0.5em;
+  border-radius: 10px;
+  background-color: aliceblue;
+  color: rgb(38, 100, 155);
+  padding: 10px 10px;
+  margin: 1px;
+  font-family: var(--fuente-principal);
+
+}
+
+/* Modificado: Contenedor principal del juego */
+.contenedor-juego {
+  position: relative;
+  width: 1280px;
+  height: 720px;
+  overflow: hidden;
+  background-image: url('../assets/juego/img_juego_final.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* Ajusta la posición de las canecas dentro del nuevo tamaño 1280x720 */
+.secciones-reciclaje {
+  padding: 0;
+}
+
+/* Canecas (Ajusta 'left' y 'top' según tu diseño en 1280x720) */
+.seccion-residuos-organicos {
+  position: absolute;
+  left: 120px;
+  top: 280px;
+}
+
+.seccion-residuos-no-aprovechables {
+  position: absolute;
+  left: 605px;
+  top: 287px;
+}
+
+.seccion-residuos-aprovechables {
+  position: absolute;
+  left: 1045px;
+  top: 297px;
+}
+
+/* Estilos de las imágenes de canecas (se mantienen pero dentro de las secciones) */
+.imgorganico,
+.imgaprovechable,
+.imgnoaprovechable {
+  position: absolute;
+  width: 125px;
+  height: 125px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  display: block;
+}
+
+.imgorganico {
+  background-image: url(../assets/educativo/caneca-green.png);
+}
+
+.imgaprovechable {
+  background-image: url(../assets/educativo/caneca-white.png);
+}
+
+.imgnoaprovechable {
+  background-image: url(../assets/educativo/caneca-black.png);
+}
+
+
+.basura {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  z-index: 5;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* Aquí es donde la imagen se establecerá dinámicamente desde el HTML con [style.backgroundImage] */
+}
+

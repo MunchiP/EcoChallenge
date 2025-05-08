@@ -1,0 +1,273 @@
+/* Importar fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Variables de Color y Fuentes */
+:host {
+  --color-relleno-radio: #267adb;
+  /* Azul medio para relleno radio seleccionado */
+  --color-borde-radio: var(--color-arbol);
+  /* Verde para borde radio */
+  --color-texto-principal: #000000;
+  /* Gris oscuro para buena legibilidad */
+  --color-texto-secundario: #000000;
+  --color-labels: #133d0e;
+  --color-boton: var(--color-relleno-radio);
+  /* Azul del radio para el botón */
+  --color-borde-input: #1fa72a;
+  /* Borde inicial input verde pálido */
+  --color-borde-input-focus: #27691e;
+  /* Borde input focus verde */
+  --color-error: #E53935;
+  --color-titulo: #41a3bb;
+  --fuente-principal: 'Poppins', sans-serif;
+}
+
+.pagina-formulario-infantil {
+  width: 100%;
+  min-height: 100vh;
+  background-image: url(../assets/registro-usuario/prototipo-final-form.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Contenedor del Formulario: Ahora es un área invisible de posicionamiento */
+.formulario-contenedor-infantil {
+  max-width: 500px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 1rem;
+  border-radius: 20px;
+  position: relative;
+  top: -20px;
+  font-family: var(--fuente-principal);
+
+}
+
+/* Título Principal */
+h1 {
+  transform: translateY(8px);
+  color: var(--color-titulo);
+  font-size: 2.5em;
+  font-weight: 700;
+}
+
+/* Párrafo Introductorio */
+p {
+  transform: translateY(1px);
+  color: var(--color-texto-secundario);
+  margin-bottom: 20px;
+  font-size: 1.1em;
+}
+
+/* Estilos para Campos del Formulario */
+.campo-formulario {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels (Nombre, Apellido, Edad, Género) */
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--color-labels);
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* Inputs (Texto y Número) */
+input[type="text"],
+input[type="number"] {
+  position: static;
+  width: 90%;
+  max-width: 90%;
+  padding: 12px 12px;
+  border: 2px solid var(--color-borde-input);
+  border-radius: 14px;
+  box-sizing: border-box;
+  font-size: 1em;
+  font-family: var(--fuente-principal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--color-borde-input-focus);
+  box-shadow: 0 0 0 3px rgba(90, 186, 122, 0.25);
+  outline: none;
+}
+
+/* Placeholder */
+::placeholder {
+  color: #2d502d;
+  opacity: 1;
+}
+
+/* Labels y radio buttons*/
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  outline: none;
+}
+
+.opciones-radio {
+  display: flex;
+  gap: 1rem;
+}
+
+.opcion-radio label {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  gap: 8px;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+input[type="radio"]+label::before {
+  order: 1;
+  content: "";
+  border: 2px solid #1acf23;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  box-sizing: border-box;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 6px rgba(26, 180, 207, 0.3);
+}
+
+.opcion-radio label:hover {
+  transform: scale(1.05);
+}
+
+#genero_masculino:checked+label::before {
+  background-color: #110dec;
+  box-shadow: 0 0 0 4px rgba(62, 187, 13, 0.2);
+}
+
+#genero_femenino:checked+label::before {
+  background-color: #ec0da9;
+  box-shadow: 0 0 0 4px rgba(20, 241, 49, 0.2);
+}
+
+
+/* --- Punto central animado (opcional) --- */
+input[type="radio"]+label::after {
+  content: "";
+  position: absolute;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+
+/*Mensajes de error */
+
+.error-mensaje {
+  height: 20px;
+  font-size: 14px;
+  color: var(--color-error);
+  visibility: hidden;
+  margin-top: 4px;
+}
+
+.error-mensaje.activo {
+  visibility: visible;
+}
+
+/* --- Botón de Envío --- */
+.boton-ingresar {
+  background: var(--color-boton);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1em;
+  font-weight: bold;
+  font-family: var(--fuente-principal);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 10px rgba(58, 124, 165, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.boton-ingresar:hover:not(:disabled) {
+  background: #1ab4cf;
+  /* Azul más oscuro */
+  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
+  transform: translateY(-2px);
+}
+
+.boton-ingresar:active:not(:disabled) {
+  transform: translateY(0px);
+  /* Vuelve a su sitio al hacer clic */
+  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
+}
+
+.boton-ingresar:disabled {
+  background: #BDBDBD;
+  /* Gris claro */
+  color: #757575;
+  /* Texto gris oscuro */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive para tablets y móviles */
+@media (max-width: 768px) {
+  .formulario-contenedor-infantil {
+    margin: 40px 10px;
+    padding: 15px;
+    position: relative;
+    top: 10px;
+    left: 65px;
+  }
+
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+
+  .opciones-radio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6em;
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    font-size: 0.95em;
+  }
+
+  .boton-ingresar {
+    font-size: 1em;
+    padding: 8px 16px;
+  }
+
+  label {
+    font-size: 0.9em;
+  }
+}
+
+
+

@@ -1,0 +1,53 @@
+<div class="contenedor-principal">
+
+    <div class="informativo">
+        <p>
+            Adelante <br>
+            Eco-Aventurero! comienza tu mision 
+            recogiendo las basuras segun su respectiva caneca.
+        </p>
+
+    </div>
+
+    <div class="contenedor-juego">
+        <div class="secciones-reciclaje">
+            <div class="game-wrapper">
+                <h1>Clasificación De Residuos</h1>
+            </div>
+
+            <div class="seccion-residuos-organicos">
+                <div class="imgorganico"></div>
+            </div>
+            <div class="seccion-residuos-aprovechables">
+                <div class="imgaprovechable"></div>
+            </div>
+            <div class="seccion-residuos-no-aprovechables">
+                <div class="imgnoaprovechable"></div>
+            </div>
+        </div>
+
+        <div class="personaje" [style.left.px]="personajeX" [style.top.px]="personajeY">
+
+        </div>
+
+        <div>
+            <ng-container *ngFor="let basura of basuras">
+                <div *ngIf="!basura.recogida" 
+                     class="basura" 
+                     [style.left.px]="basura.x" 
+                     [style.top.px]="basura.y"
+                     [style.backgroundImage]="'url(\'' + basura.imageSrc + '\')'"> 
+                     </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="gif">
+    </div>
+
+    <div class="boton-nivel3">
+        <button type="submit">
+            Ir a nivel 3
+        </button>
+    </div> 
+</div>
