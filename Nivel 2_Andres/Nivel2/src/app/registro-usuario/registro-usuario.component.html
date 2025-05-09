@@ -1,0 +1,51 @@
+<div class="formulario-contenedor-infantil">
+    <h1>¡Hola, Eco-Aventurero!</h1>
+    <p>¡Llena tus datos para empezar a reciclar y jugar!</p>
+    <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+      <div class="campo-formulario">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" formControlName="nombre" placeholder="Tu nombre aquí">
+        <div *ngIf="registroForm.get('nombre')?.invalid && (registroForm.get('nombre')?.dirty || registroForm.get('nombre')?.touched)" class="error-mensaje">
+          ¡Necesitamos tu nombre!
+        </div>
+      </div>
+
+      <div class="campo-formulario">
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" formControlName="apellido" placeholder="Tus apellidos">
+         <div *ngIf="registroForm.get('apellido')?.invalid && (registroForm.get('apellido')?.dirty || registroForm.get('apellido')?.touched)" class="error-mensaje">
+          ¡También tu apellido!
+        </div>
+      </div>
+
+      <div class="campo-formulario campo-radio">
+        <label>Género:</label> <div class="opciones-radio">
+          <div class="opcion-radio">
+            <input type="radio" id="genero_femenino" formControlName="genero" value="femenino" required>
+            <label for="genero_femenino" id="label-femenino">Femenino</label>
+          </div>
+
+          <div class="opcion-radio">
+            <input type="radio" id="genero_masculino" formControlName="genero" value="masculino" required>
+             <label for="genero_masculino" id="label-masculino">Masculino</label>
+          </div>
+        </div>
+        <div *ngIf="registroForm.get('genero')?.invalid && (registroForm.get('genero')?.dirty || registroForm.get('genero')?.touched)" class="error-mensaje">
+          ¡Selecciona un género!
+        </div>
+      </div>
+
+      <div class="campo-formulario">
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" formControlName="edad" placeholder="Cuántos años tienes">
+         <div *ngIf="registroForm.get('edad')?.invalid && (registroForm.get('edad')?.dirty || registroForm.get('edad')?.touched)" class="error-mensaje">
+          <span *ngIf="registroForm.get('edad')?.errors?.['required']">¡Dinos tu edad!</span>
+          <span *ngIf="registroForm.get('edad')?.errors?.['min'] || registroForm.get('edad')?.errors?.['max']">La edad debe ser entre 5 y 18 años.</span>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!registroForm.valid" class="boton-ingresar">
+        ¡A Jugar!
+      </button>
+    </form>
+  </div>

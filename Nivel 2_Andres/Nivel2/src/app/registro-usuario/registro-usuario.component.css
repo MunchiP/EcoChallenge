@@ -1,0 +1,239 @@
+/* Importar fuente Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+/* Variables de Color y Fuentes */
+:host {
+  --color-mar: #64C8F0;       /* Azul cielo/mar más vivo */
+  --color-arbol: #5ABA7A;     /* Verde árbol/planta amigable */
+  --color-tierra: #B8860B;    /* Ocre/Dorado oscuro (Tierra/Arena) */
+  --color-relleno-radio: #267adb; /* Azul medio para relleno radio seleccionado */
+  --color-borde-radio: var(--color-arbol); /* Verde para borde radio */
+  --color-fondo-form: #ffffff;
+  --color-texto-principal: #000000; /* Gris oscuro para buena legibilidad */
+  --color-texto-secundario: #000000;
+  --color-labels: #133d0e;
+  --color-boton: var(--color-relleno-radio); /* Azul del radio para el botón */
+  --color-borde-input: #1fa72a; /* Borde inicial input verde pálido */
+  --color-borde-input-focus: #27691e;; /* Borde input focus verde */
+  --color-error: #E53935; /* Rojo para errores */
+  --color-titulo: #52bdd8;
+  --fuente-principal: 'Poppins', sans-serif;
+}
+
+/* Contenedor Principal del Formulario */
+.formulario-contenedor-infantil {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 15px 15px; /* Un poco menos padding vertical */
+  font-family: var(--fuente-principal);
+  text-align: center;
+  background-color: var(--color-fondo-form); /* Necesario para que background-clip funcione */
+  position: relative; /* Para posicionar elementos internos si es necesario */
+  border: solid 0.5px transparent; /* Grosor del borde */
+  border-radius: 25px;          /* Esquinas redondeadas */
+  background-image:
+    linear-gradient(var(--color-fondo-form), var(--color-fondo-form)),
+    linear-gradient(135deg, var(--color-mar), var(--color-arbol), var(--color-tierra));
+  background-origin: border-box; /* Origen desde el borde */
+  background-clip: content-box, border-box; /* Esencial para el efecto */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título Principal */
+h1 {
+  color: var(--color-titulo);
+  font-size: 2.2em; /* Un poco más grande */
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+/* Párrafo Introductorio */
+p {
+  color: var(--color-texto-secundario);
+  margin-bottom: 25px; /* Más espacio antes del form */
+  font-size: 1.1em;
+  line-height: 1.5;
+}
+
+/* Estilos para Campos del Formulario */
+.campo-formulario {
+  margin-left: 25px; 
+  margin-right: 25px;
+  margin-bottom: 8px;
+  text-align: left;
+  position: relative; /* Para posicionar errores si es necesario */
+}
+
+/* Labels (Nombre, Apellido, Edad, Género) */
+label { /* Estilo base para todas las labels */
+  display: block;
+  transform: translateX(7px);
+  margin-bottom: 10px;
+  color: var(--color-labels);
+  font-weight: bold;
+  font-size: 0.95em;
+}
+
+/* Inputs (Texto y Número) */
+input[type="text"],
+input[type="number"] {
+  margin: 4px;
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--color-borde-input);
+  border-radius: 14px; /* Más redondeado */
+  box-sizing: border-box;
+  font-size: 1em;
+  font-family: var(--fuente-principal);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--color-borde-input-focus);
+  box-shadow: 0 0 0 3px rgba(90, 186, 122, 0.25); /* Resplandor verde al enfocar */
+  outline: none;
+  background-color: #fff;
+}
+
+/* Placeholder */
+::placeholder {
+  color: #2d502d;
+  opacity: 1;
+}
+
+/* Labels y radio buttons*/
+input[type="radio"]{
+  appearance: none;
+}
+
+.opciones-radio {
+  display: flex;
+  justify-content: center; 
+  gap: 30px;             
+  margin-top: 10px;      
+}
+
+.opcion-radio label {
+  display: inline-flex;    
+  flex-direction: column;  
+  align-items: center;     
+  gap: 8px;                
+  cursor: pointer;
+  transform: none;
+  margin-bottom: 0;
+}
+
+input[type="radio"]+label::before {
+  order: 1; 
+  content: "";
+  border: 2px solid #1ab4cf; 
+  border-radius: 50%;
+  height: 18px; 
+  width: 18px;  
+  box-sizing: border-box;
+}
+
+input[type="radio"]:checked+label::before {
+  background-color: #147061; /* O tu color */
+}
+
+/* --- Botón de Envío --- */
+.boton-ingresar {
+  background: var(--color-boton); 
+  color: white;
+  margin-top: 20px;
+  padding: 14px 30px; 
+  border: none;
+  border-radius: 30px; 
+  cursor: pointer;
+  font-size: 1.3em;
+  font-weight: bold;
+  font-family: var(--fuente-principal);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px;
+  display: inline-block; /* Para que margin auto funcione si se necesita */
+  box-shadow: 0 4px 10px rgba(58, 124, 165, 0.4); /* Sombra azul */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.boton-ingresar:hover:not(:disabled) {
+  background: #1ab4cf; /* Azul más oscuro */
+  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
+  transform: translateY(-2px); /* Ligero levantamiento */
+}
+
+.boton-ingresar:active:not(:disabled) {
+  transform: translateY(0px); /* Vuelve a su sitio al hacer clic */
+  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
+}
+
+.boton-ingresar:disabled {
+  background: #BDBDBD; /* Gris claro */
+  color: #757575; /* Texto gris oscuro */
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* --- Mensajes de Error --- */
+.error-mensaje {
+  color: var(--color-error);
+  font-size: 0.85em;
+  margin-top: 6px;
+  text-align: left; /* Alinear a la izquierda */
+  width: 100%;      /* Ocupar ancho si es absoluto */
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 600px) {
+  .formulario-contenedor-infantil {
+    margin: 10px 15px; /* Más margen vertical, menos horizontal */
+    padding: 25px 20px;
+    border-width: 6px; /* Borde un poco más delgado */
+    border-radius: 20px;
+  }
+
+  h1 {
+    font-size: 1.9em;
+  }
+
+  p {
+    font-size: 1em;
+    margin-bottom: 30px;
+  }
+
+  input[type="text"],
+  input[type="number"],
+  .boton-ingresar {
+    font-size: 1em; /* Ajustar tamaño fuente inputs y botón */
+    padding: 12px 15px;
+  }
+
+  .boton-ingresar {
+    padding: 12px 30px; /* Padding botón */
+    font-size: 1.2em;
+  }
+
+  /* Radio buttons en móvil */
+  .opciones-radio {
+    gap: 10px 20px; /* Menos espacio */
+    justify-content: flex-start; /* Alinear a la izquierda en móvil */
+    padding-left: 0;
+  }
+
+  .opcion-radio label {
+    padding-left: 30px; /* Ajustar padding si el círculo es más pequeño */
+  }
+
+  .opcion-radio label::before { /* Círculo exterior más pequeño */
+    width: 20px;
+    height: 20px;
+  }
+
+  .opcion-radio label::after { /* Círculo interior más pequeño */
+    left: 4px;
+    width: 12px;
+    height: 12px;
+  }
+}
