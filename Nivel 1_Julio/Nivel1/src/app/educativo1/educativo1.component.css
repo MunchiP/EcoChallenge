@@ -1,0 +1,151 @@
+.educativo1-container {
+    background-image: url(/assets/info.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    min-height: 100vh;
+    width: 100%;
+    position: absolute; top: 0; left: 0; min-height: 100vh; width: 100%; z-index: -1;
+    top: 0;
+    left: 0;
+
+  }
+  .info p {
+    font-size: 8vw; 
+    height: auto; 
+    width: 50vw; 
+    max-width: 95%; 
+    border-radius: 10px; 
+    text-align: center; 
+    background-color: rgba(255, 255, 255, 0.918);
+    z-index: 1;
+    position: fixed;
+    padding: 1vh 2vw; 
+    margin-top: 75vh; 
+    margin-left: 38vw; 
+    align-items: center;
+  }
+  
+  /* Media Queries para pantallas más grandes */
+  @media (min-width: 768px) {
+    .info p {
+      font-size: 3vw;
+      top: 2vh;
+      border-radius: 15px;
+    }
+  }
+  
+  /* Media Queries para pantallas aún más grandes */
+  @media (min-width: 1200px) {
+    .info p {
+      font-size: 2vw;
+      top: 1vh;
+      border-radius: 20px;
+      padding: 0.5vh 1vw;
+    }
+  }
+  .info-board-container {
+    position: absolute;
+    top: -1%; 
+    left: 30%; 
+    width: 68%; 
+    height: auto; 
+    padding: 1.5vw; 
+    box-sizing: border-box;
+    
+  }
+  
+  .info-board-container h1 {
+    font-size: 1.9vw;
+    text-align: center;
+    margin-bottom: 1vh;
+  }
+  
+  .info-board-container p {
+    font-size: 1.3vw;
+    margin-bottom: 1.5vh;
+  
+  }
+  
+  .info-board-container table {
+    width: 100%;
+    font-size: 1.2vw;
+    border-collapse: separate;
+    border-spacing: 0vw;
+  }
+  
+  .info-board-container td {
+    padding: 0.3vw;
+    text-align: left;
+    vertical-align: top; /* Ajustar la alineación vertical para textos más largos */
+  }
+  
+  .info-board-container td > div {
+    margin-bottom: 0.1vw;
+  }
+  
+  .info-board-container .material-icon {
+    width: 10vw; 
+    height: auto;
+    vertical-align: middle;
+    margin-right: 0.3vw;
+  }
+  
+  .info-board-container .material-icon:hover {
+    transform: scale(2);
+    background-color: aliceblue;
+  }
+ 
+  
+  button {
+    position: absolute;
+    bottom: 3vh;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 1.5vh 3vw; 
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 4vw; 
+    z-index: 1;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
+  /* Media Queries para pantallas más grandes */
+  @media (min-width: 768px) {
+    button {
+      font-size: 2vw; 
+      bottom: 2vh;
+      padding: 1vh 2vw;
+    }
+  }
+  
+  /* Media Queries para pantallas aún más grandes */
+  @media (min-width: 1200px) {
+    button {
+      font-size: 1.5vw; 
+      bottom: 1vh;
+      padding: 0.8vh 1.5vw;
+    }
+  }
+  @media (max-width: 600px) {
+    .info p {
+      width: 90vw;
+      left: -9rem; 
+    }
+  
+    .info1 h1 {
+      width: 90vw;
+      left: 5vw;
+    }
+  
+    .info1 table {
+      width: 95vw;
+      left: 2.5vw;
+    }
+  }

@@ -1,0 +1,109 @@
+<div class="juego-container">
+  <div class="juego1-boundary" cdkDragBoundary=".juego1-boundary">
+    <div
+      *ngIf="isDraggableVisible['objeto-1']"
+      id="objeto-1"
+      cdkDrag
+      (cdkDragEnded)="onDragEnded($event, 'objeto-1')"
+      class="draggable-item"
+      style="top: 64%;
+      left: 40%;
+      transform: translate(-50%, -50%); "
+    >
+      <img [src]="draggableItems['objeto-1']?.imageUrl" alt="{{ draggableItems['objeto-1']?.label }}" class="draggable-image obj-1-img">
+    </div>
+    <div
+      *ngIf="isDraggableVisible['objeto-2']"
+      id="objeto-2"
+      cdkDrag
+      (cdkDragEnded)="onDragEnded($event, 'objeto-2')"
+      class="draggable-item"
+      style="top: 62.5%;
+      left: 48%;
+      transform: translate(-50%, -50%);"
+    >
+      <img [src]="draggableItems['objeto-2']?.imageUrl" alt="{{ draggableItems['objeto-2']?.label }}" class="draggable-image obj-2-img">
+    </div>
+    <div
+      *ngIf="isDraggableVisible['objeto-3']"
+      id="objeto-3"
+      cdkDrag
+      (cdkDragEnded)="onDragEnded($event, 'objeto-3')"
+      class="draggable-item"
+      style="top: 58%;
+      left: 54%;
+      transform: translate(-50%, -50%);"
+    >
+      <img [src]="draggableItems['objeto-3']?.imageUrl" alt="{{ draggableItems['objeto-3']?.label }}" class="draggable-image obj-3-img">
+    </div>
+    <div
+      *ngIf="isDraggableVisible['objeto-4']"
+      id="objeto-4"
+      cdkDrag
+      (cdkDragEnded)="onDragEnded($event, 'objeto-4')"
+      class="draggable-item"
+      style="top: 53%;
+      left: 65%;
+      transform: translate(-50%, -50%);"
+    >
+      <img [src]="draggableItems['objeto-4']?.imageUrl" alt="{{ draggableItems['objeto-4']?.label }}" class="draggable-image obj-4-img">
+    </div>
+    <div
+      *ngIf="isDraggableVisible['objeto-5']"
+      id="objeto-5"
+      cdkDrag
+      (cdkDragEnded)="onDragEnded($event, 'objeto-5')"
+      class="draggable-item"
+      style="top:57%;
+      left: 84%;
+      transform: translate(-50%, -50%);"
+    >
+      <img [src]="draggableItems['objeto-5']?.imageUrl" alt="{{ draggableItems['objeto-5']?.label }}" class="draggable-image obj-5-img">
+    </div>
+
+    <div id="drop-target" class="drop-target">
+      </div>
+    <div id="No" class="drop-target2">
+      </div>
+
+    <div *ngIf="isCorrect['objeto-1'] === 'correct'" class="validation correct">
+      ¡Correcto!
+    </div>
+    <div *ngIf="isCorrect['objeto-2'] === 'correct'" class="validation correct">
+      ¡Correcto!
+    </div>
+    <div *ngIf="isCorrect['objeto-3'] === 'correct'" class="validation correct">
+      ¡Correcto!
+    </div>
+    <div *ngIf="isCorrect['objeto-4'] === 'correct'" class="validation correct">
+      ¡Correcto!
+    </div>
+    <div *ngIf="isCorrect['objeto-5'] === 'correct'" class="validation correct">
+      ¡Correcto!
+    </div>
+
+    <div *ngIf="isCorrect['objeto-1'] === 'incorrect'" class="validation incorrect">
+      Incorrecto.
+    </div>
+    <div *ngIf="isCorrect['objeto-2'] === 'incorrect'" class="validation incorrect">
+      Incorrecto.
+    </div>
+    <div *ngIf="isCorrect['objeto-3'] === 'incorrect'" class="validation incorrect">
+      Incorrecto.
+    </div>
+    <div *ngIf="isCorrect['objeto-4'] === 'incorrect'" class="validation incorrect">
+      Incorrecto.
+    </div>
+    <div *ngIf="isCorrect['objeto-5'] === 'incorrect'" class="validation incorrect">
+      Incorrecto.
+    </div>
+
+    <div class="explain">
+      <h1>
+        Arrastra el objeto al logo <span class="verde">VERDE</span> si es reciclable,
+        sino llévalo al logo <span class="rojo">ROJO</span>
+      </h1>
+    </div>
+  </div>
+  <button (click)="GoJuego2()">Juego 2</button>
+</div>

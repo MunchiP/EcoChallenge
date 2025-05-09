@@ -1,0 +1,228 @@
+
+.juego-container {
+  background-image: url('/assets/juego.png'); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  min-height: 100vh;
+  width: 100%;
+  position: absolute; top: 0; left: 0; min-height: 100vh; width: 100%; z-index: -1;
+  top: 0;
+  left: 0;
+}
+.draggable-item {
+  width: 15vw; 
+  height: 15vw;
+  min-width: 80px;
+  min-height: 80px;
+  position: absolute; 
+  cursor: move;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  transform: translate(-50%, -50%); 
+
+}
+/* tamaño de image */
+.draggable-item img.obj-1-img {
+  width: 190px; 
+  max-width: 100%; 
+  height: auto;   
+}
+.draggable-item img.obj-2-img {
+  width: 120px;
+  max-width: 100%;
+  height: auto;    
+}
+.draggable-item img.obj-3-img {
+  width:50%;
+  height: 100%;
+  object-fit: contain;
+}
+.draggable-item img.obj-4-img {
+  width: 290px;
+  max-width: 100%;
+  height: auto;    
+}
+.draggable-item img.obj-5-img {
+  width: 400px;
+  max-width: 100%; 
+  height: auto;    
+  object-fit: contain;
+}
+.drop-target {
+  background-image: url(/assets/logo.png);
+  background-size: cover;
+  width: 12vw; 
+  height: 12vw; 
+  min-width: 100px;
+  min-height: 100px;
+  border: 0px solid;
+  position: absolute;
+  top: 75vh; 
+  left: 65vw; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: green;
+  font-weight: bold;
+}
+
+.drop-target2 {
+  background-image: url(/assets/No.png);
+  background-size: cover;
+  width: 12vw;
+  height: 12vw;
+  min-width: 100px;
+  min-height: 100px;
+  border: 0px solid;
+  position: absolute;
+  top: 75vh;
+  left: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-weight: bold;
+}
+.explain h1 {
+  display: block;
+  position: relative;
+  left: 5%; 
+  top: 10px; 
+  background-color: rgba(240, 248, 255, 0.884);
+  font-size: 3vw; 
+  border-radius: 20px;
+  text-align: center;
+  width: 60%; 
+  margin: 2vh auto; 
+  padding: 2vh; 
+}
+
+.explain .verde {
+  color: #218838;
+}
+
+.explain .rojo {
+  color: red;
+}
+.validation {
+  font-size: 4vw; 
+  position: absolute;
+  bottom: 3vh; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  padding: 1vh 2vw; 
+  border-radius: 5px;
+  white-space: nowrap; 
+}
+
+.validation.correct {
+  background-color: lightgreen;
+  color: green;
+}
+
+.validation.incorrect {
+  background-color: lightcoral;
+  color: red;
+}
+
+button {
+  position: absolute;
+  bottom: 3vh; 
+  right: 3vw; 
+  transform: translateX(0);
+  padding: 1.5vh 3vw; 
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 4vw; 
+  z-index: 1;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+@media (min-width: 768px) {
+  button {
+    font-size: 2vw; 
+    bottom: 2vh;
+    right: 2vw;
+    padding: 1vh 2vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  button {
+    font-size: 1.5vw;
+    bottom: 1vh;
+    right: 1vw;
+    padding: 0.8vh 1.5vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .draggable-item.objeto-1-inicial {
+    top: 30%; 
+    left: 50%;
+  }
+}
+@media (max-width: 480px) {
+  .draggable-item.objeto-1-inicial {
+    top: 20%; 
+    left: 50%;
+  }
+}
+@media (max-width: 768px) {
+  .drop-target,
+  .drop-target2 {
+    width: 18vw; 
+    height: 18vw;
+    min-width: 80px; 
+    min-height: 80px;
+    top: 80vh; 
+    left: 10vw; 
+  }
+
+  .drop-target {
+    left: 60vw; 
+  }
+
+  .drop-target2 {
+    left: 30vw; 
+  }
+}
+
+@media (max-width: 480px) {
+  .drop-target,
+  .drop-target2 {
+    width: 25vw;
+    height: 25vw;
+    top: 85vh;
+  }
+
+  .drop-target {
+    left: 55vw;
+  }
+
+  .drop-target2 {
+    left: 20vw;
+  }
+}
+@media (min-width: 768px) {
+  .validation {
+    font-size: 2vw; 
+    bottom: 2vh;
+  }
+}
+
+@media (min-width: 1200px) {
+  .validation {
+    font-size: 1.5vw;
+    bottom: 1vh;
+  }
+}
