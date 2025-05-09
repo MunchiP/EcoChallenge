@@ -1,7 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+
 interface DraggableItem {
   id: string;
   imageUrl: string;
@@ -10,7 +12,7 @@ interface DraggableItem {
 @Component({
   selector: 'app-drag-boundary',
   standalone: true,
-  imports: [DragDropModule, NgIf],
+  imports: [DragDropModule, NgIf,CommonModule],
   templateUrl: './juego1.component.html',
   styleUrl: './juego1.component.css',
 })
@@ -87,6 +89,7 @@ export class Juego1component implements AfterViewInit {
 
   correctTargets: { [key: string]: string } = {
     'objeto-1': 'target1', 
+    'objeto-2': 'target1', 
     'objeto-3': 'target1',
     'objeto-4': 'target1',
     'objeto-5': 'target2',
@@ -129,6 +132,6 @@ export class Juego1component implements AfterViewInit {
   }
 
   GoJuego2() {
-    this.router.navigate(['/juego2']);
+    this.router.navigate(['/educativo2']);
   }
 }
