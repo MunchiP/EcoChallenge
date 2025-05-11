@@ -19,7 +19,7 @@ export const routes: Routes = [
 
   { path: '', component: RegistroUsuarioComponent },
   { path: 'educativo', component: EducativoComponent },
-  { path: 'juego-reciclaje', component: CaminoReciclajeComponent }
+  { path: 'camino-reciclaje', component: CaminoReciclajeComponent }
 
 
 ];
