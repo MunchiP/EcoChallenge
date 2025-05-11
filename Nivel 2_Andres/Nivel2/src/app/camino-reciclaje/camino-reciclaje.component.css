@@ -1,143 +1,35 @@
-/* Importar fuente Poppins */
+/* Importar fuente Poppins (mantener) */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
-/* Variables de Color y Fuentes */
+/* Variables de Color y Fuentes (mantener) */
 :host {
   --fuente-principal: 'Poppins', sans-serif;
 }
 
+.fondo-juego {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/juego/img_juego_final.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
 .contenedor-principal {
-  background-color: #368b2b;
   position: relative;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
-
-.gif {
-  position: absolute;
-  width: 200px;
-  height: 300px;
-  z-index: 10;
-  background-image: url('../assets/juego/Hip-hop_c.gif');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  left: 1290px;
-  top: 80px;
-}
-
-.game-wrapper {
-  position: absolute;
-  width: 300px;
-  left: 480px;
-  top: -41px;
-  padding: 20px 20px;
-}
-
-/* Estilo para el título */
-.game-wrapper h1 {
-  color: #328527;
-  margin-bottom: 15px;
-  text-align: center;
-  font-family: var(--fuente-principal);
-  background-color: rgba(255, 255, 255, 255);
-  border-radius: 6px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-
-
-.informativo {
-  position: absolute;
-  width: 200px;
-  left: 1292px;
-  top: 420px;
-  background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.informativo p {
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: bold;
-  color: #0c0c0c;
-  font-family: var(--fuente-principal);
-}
-
-.boton-nivel3 {
-  position: absolute;
-  left: 1300px;
-  top: 645px;
-}
-
-.boton-nivel3 button {
-  padding: 0.8em 1.5em;
-  font-size: 1.2em;
-  border-radius: 18px;
-  background: linear-gradient(45deg, #1ee20d, #0c97e7);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
-  font-family: var(--fuente-principal);
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-
-.boton-nivel3 button:not(:disabled) {
-  background: linear-gradient(45deg,#103e58, #093a04 );
-  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
-}
-
-.boton-nivel3 button:active:not(:disabled) {
-  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
-}
-
-
-.personaje {
-  position: absolute;
-  width: 200px;
-  /* Asegúrate de que estas dimensiones estén definidas para el div */
-  height: 200px;
-  /* Asegúrate de que estas dimensiones estén definidas para el div */
-  z-index: 10;
-  /* AÑADE ESTAS PROPIEDADES PARA MOSTRAR LA IMAGEN DEL PERSONAJE */
-  background-image: url('../assets/juego/chica-final.png');
-  /* Usa la ruta correcta a tu personaje */
-  background-size: contain;
-  /* O 'cover', dependiendo de cómo quieras que se ajuste */
-  background-repeat: no-repeat;
-  background-position: center;
-  /* Centra la imagen dentro del div */
-}
-
-.basura {
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  z-index: 5;
-  object-fit: contain;
-}
-
-
-.clas-canecas {
-  position: absolute;
-  top: 200px;
-  left: 940px;
-  text-align: center;
-  font-size: 0.5em;
-  border-radius: 10px;
-  background-color: aliceblue;
-  color: rgb(38, 100, 155);
-  padding: 10px 10px;
-  margin: 1px;
-  font-family: var(--fuente-principal);
-
-}
-
-/* Modificado: Contenedor principal del juego */
+/* Contenedor del Juego (mantener tamaño fijo interno pero permitir que Flexbox lo posicione) */
 .contenedor-juego {
   position: relative;
   width: 1280px;
@@ -148,33 +40,176 @@
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
 }
 
-/* Ajusta la posición de las canecas dentro del nuevo tamaño 1280x720 */
-.secciones-reciclaje {
-  padding: 0;
+/* Nuevo Contenedor Lateral - Usar Flexbox en columna */
+.contenedor-lateral {
+  display: flex;
+  gap: 20px;
+  max-width: 100%;
+  align-items: center;
+  margin-left: 12%;
 }
 
-/* Canecas (Ajusta 'left' y 'top' según tu diseño en 1280x720) */
+.informativo {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  order: 0;
+  width: 79%;
+  box-sizing: border-box;
+}
+
+.informativo p {
+  text-align: center;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #0c0c0c;
+  font-family: var(--fuente-principal);
+}
+
+
+.gif {
+  width: 700px;
+  height: 250px;
+  z-index: 10;
+  background-image: url('../assets/juego/Hip-hop_c.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  max-width: 100%;
+  margin-bottom: 20px;
+}
+
+.boton-nivel3 {
+  width: 700px;
+  order: -1;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+
+/* Estilos principales del botón */
+.boton-nivel3 button {
+  padding: 0.8em 1.5em;
+  font-size: 1.2em;
+  border-radius: 18px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  font-family: var(--fuente-principal);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  width: 200px;
+  box-sizing: border-box;
+}
+
+/* Estilos cuando el botón está habilitado (no disabled) */
+.boton-nivel3 button:not(:disabled) {
+  background: linear-gradient(45deg, #3792c7, #3bff25);
+  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
+}
+
+/* --- Efecto Hover (al pasar el ratón) --- */
+.boton-nivel3 button:hover:not(:disabled) {
+  background: linear-gradient(45deg, #175a0f, #1e6086);
+  box-shadow: 0 8px 20px rgba(42, 90, 125, 0.6);
+  transform: translateY(-3px);
+}
+
+
+/* Estado Activo (al hacer clic) */
+.boton-nivel3 button:active:not(:disabled) {
+  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
+  transform: translateY(1px);
+}
+
+/* Optional: Estilos para el estado disabled (si aplica) */
+.boton-nivel3 button:disabled {
+  opacity: 0.6;
+  /* Reducir opacidad */
+  cursor: not-allowed;
+  /* Cambiar cursor */
+}
+
+.game-wrapper {
+  /* Mantener */
+  width: 300px;
+  box-sizing: border-box;
+  margin: -40px auto;
+  transform: translateX(20px);
+  padding: 20px 20px;
+}
+
+.game-wrapper h1 {
+  /* Mantener */
+  color: #328527;
+  margin-bottom: 15px;
+  text-align: center;
+  /* <-- Esta propiedad ya centra el texto DENTRO del H1 */
+  font-family: var(--fuente-principal);
+  background-color: rgba(255, 255, 255, 255);
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.personaje {
+  /* Mantener */
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  background-image: url('../assets/juego/chica-final.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.basura {
+  /* Mantener */
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  z-index: 5;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+/* Secciones de Canecas (mantener position: absolute si es necesario para la lógica del juego dentro de 1280x720) */
 .seccion-residuos-organicos {
+  /* Mantener */
   position: absolute;
   left: 120px;
   top: 280px;
 }
 
 .seccion-residuos-no-aprovechables {
+  /* Mantener */
   position: absolute;
   left: 605px;
   top: 287px;
 }
 
 .seccion-residuos-aprovechables {
+  /* Mantener */
   position: absolute;
   left: 1045px;
   top: 297px;
 }
 
-/* Estilos de las imágenes de canecas (se mantienen pero dentro de las secciones) */
+/* Estilos de imágenes de canecas (mantener, son position: absolute dentro de sus contenedores de sección) */
 .imgorganico,
 .imgaprovechable,
 .imgnoaprovechable {
@@ -197,16 +232,3 @@
 .imgnoaprovechable {
   background-image: url(../assets/educativo/caneca-black.png);
 }
-
-
-.basura {
-  position: absolute;
-  width: 70px;
-  height: 70px;
-  z-index: 5;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  /* Aquí es donde la imagen se establecerá dinámicamente desde el HTML con [style.backgroundImage] */
-}
-

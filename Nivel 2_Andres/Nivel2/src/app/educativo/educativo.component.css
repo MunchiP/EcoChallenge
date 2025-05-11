@@ -8,7 +8,8 @@
 
 /* --- Contenedor Exterior: Con la imagen de la valla (Fondo Fijo) --- */
 .pagina-educativa-exterior {
-    background-image: url(../assets/educativo/info_juego_final.jpg); /* VERIFICA ESTA RUTA */
+    background-image: url(../assets/educativo/info_juego_final.jpg);
+    /* VERIFICA ESTA RUTA */
     width: 100%;
     height: 100%;
     position: fixed;
@@ -24,29 +25,33 @@
     position: absolute;
     transform: skewY(30deg);
     /* Estas son posiciones y tamaños generales, se afinarán con media queries */
-    top:4%;
+    top: 4%;
     left: 53%;
     width: 42%;
     height: 37%;
 
     /* Puedes ajustar el origen de la transformación si es necesario */
-    transform-origin: 0% 100%; 
+    transform-origin: 0% 100%;
 }
 
 /* --- Contenedor Interno (Para el Contenido No Sesgado) --- */
 .contenedor-educativo-content {
-    transform-origin: 0% 100%; /* Debe coincidir con el del padre */
+    transform-origin: 0% 100%;
+    /* Debe coincidir con el del padre */
 
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     height: 100%;
-    padding: 1.5em 1em; /* Padding interno responsivo */
-    overflow-y: auto; /* Permite scroll si el contenido desborda */
+    padding: 1.5em 1em;
+    /* Padding interno responsivo */
+    overflow-y: auto;
+    /* Permite scroll si el contenido desborda */
     box-sizing: border-box;
 
-    background-color: rgba(255, 255, 255, 0.8); /* Fondo del recuadro */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Fondo del recuadro */
     border-radius: 6px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     font-family: var(--fuente-principal);
@@ -60,7 +65,8 @@
 }
 
 .titulo-educativo-resumido h2 {
-    color: #34ab19; /* Color oscuro para mejor legibilidad */
+    color: #34ab19;
+    /* Color oscuro para mejor legibilidad */
     font-size: 2em;
     margin-bottom: 0.5em;
     font-weight: bold;
@@ -85,7 +91,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Espacio entre las secciones */
+    gap: 20px;
+    /* Espacio entre las secciones */
     margin-top: 30px;
     width: 100%;
 }
@@ -97,7 +104,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 250px; /* Ancho base para las secciones */
+    width: 250px;
+    /* Ancho base para las secciones */
     max-width: 100%;
     text-align: center;
     padding: 15px;
@@ -107,66 +115,146 @@
 }
 
 /* Títulos de sección */
-.titulo-verde { color: #106114; font-size: 1.3em; line-height: 1.1; margin-bottom: 10px; }
-.titulo-blanco { color: #333; font-size: 1.3em; line-height: 1.1; margin-bottom: 10px; }
-.titulo-negro { color: #000000; font-size: 1.3em; line-height: 1.1; margin-bottom: 10px; }
+.titulo-verde {
+    color: #106114;
+    font-size: 1.3em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.titulo-blanco {
+    color: #333;
+    font-size: 1.3em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.titulo-negro {
+    color: #000000;
+    font-size: 1.3em;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
 
 /* --- REGLAS CSS PARA LAS IMÁGENES DE LAS CANECAS --- */
 .imgorganico,
 .imgaprovechable,
 .imgnoaprovechable {
-    width: 150px; /* Ancho base */
-    height: 150px; /* Mantén la proporción */
+    width: 150px;
+    /* Ancho base */
+    height: 150px;
+    /* Mantén la proporción */
     max-width: 100%;
     background-repeat: no-repeat;
     background-size: contain;
-    display: block; /* Para que se centren con margin: auto */
-    margin: 10px auto; /* Centra la imagen dentro de la sección */
+    display: block;
+    /* Para que se centren con margin: auto */
+    margin: 10px auto;
+    /* Centra la imagen dentro de la sección */
 }
 
 /* Define la imagen de fondo para cada caneca */
-.imgorganico { background-image: url(../assets/educativo/caneca-green.png); } /* ¡VERIFICA ESTA RUTA! */
-.imgaprovechable { background-image: url(../assets/educativo/caneca-white.png); } /* ¡VERIFICA ESTA RUTA! */
-.imgnoaprovechable { background-image: url(../assets/educativo/caneca-black.png); } /* ¡VERIFICA ESTA RUTA! */
+.imgorganico {
+    background-image: url(../assets/educativo/caneca-green.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.imgaprovechable {
+    background-image: url(../assets/educativo/caneca-white.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.imgnoaprovechable {
+    background-image: url(../assets/educativo/caneca-black.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
 
 
 /* --- Contenedor para agrupar los items dentro de cada sección --- */
 .items-seccion-contenedor {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Centra los items */
-    gap: 5px; /* Espacio entre items */
+    justify-content: center;
+    /* Centra los items */
+    gap: 5px;
+    /* Espacio entre items */
     margin-top: 10px;
-    width: 100%; /* Ocupa todo el ancho para centrar items */
+    width: 100%;
+    /* Ocupa todo el ancho para centrar items */
 }
 
 /* --- REGLAS CSS PARA LAS IMÁGENES DE LOS ITEMS (Manzana, Hueso, etc.) --- */
-.manzana, .hueso, .banana, .papel, .carton, .lata_bebida, .servilleta, .papel_higienico {
-    width: 90px; /* Ancho base */
-    height: 90px; /* Mantén la proporción */
+.manzana,
+.hueso,
+.banana,
+.papel,
+.carton,
+.lata_bebida,
+.servilleta,
+.papel_higienico {
+    width: 90px;
+    /* Ancho base */
+    height: 90px;
+    /* Mantén la proporción */
     max-width: 100%;
     background-repeat: no-repeat;
     background-size: contain;
-    display: inline-block; /* O inline-flex/flex si prefieres otro comportamiento de layout */
-    margin: 5px; /* Espacio alrededor de los items */
+    display: inline-block;
+    /* O inline-flex/flex si prefieres otro comportamiento de layout */
+    margin: 5px;
+    /* Espacio alrededor de los items */
 }
 
 /* Define la imagen de fondo para cada item */
-.manzana { background-image: url(../assets/educativo/manzana1.png); } /* ¡VERIFICA ESTA RUTA! */
-.hueso { background-image: url(../assets/educativo/hueso-final2.png); } /* ¡VERIFICA ESTA RUTA! */
-.banana { background-image: url(../assets/educativo/cascara-banana3.png); } /* ¡VERIFICA ESTA RUTA! */
-.papel { background-image: url(../assets/educativo/papel-final.png); } /* ¡VERIFICA ESTA RUTA! */
-.carton { background-image: url(../assets/educativo/carton-final.png); } /* ¡VERIFICA ESTA RUTA! */
-.lata_bebida { background-image: url(../assets/educativo/lata-bebida-final.png); } /* ¡VERIFICA ESTA RUTA! */
-.servilleta { background-image: url(../assets/educativo/servilleta-final.png); } /* ¡VERIFICA ESTA RUTA! */
-.papel_higienico { background-image: url(../assets/educativo/higienico-final.png); } /* ¡VERIFICA ESTA RUTA! */
+.manzana {
+    background-image: url(../assets/educativo/manzana1.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.hueso {
+    background-image: url(../assets/educativo/hueso-final2.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.banana {
+    background-image: url(../assets/educativo/cascara-banana3.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.papel {
+    background-image: url(../assets/educativo/papel-final.jpg);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.carton {
+    background-image: url(../assets/educativo/carton-final.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.lata_bebida {
+    background-image: url(../assets/educativo/lata-bebida-final.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.servilleta {
+    background-image: url(../assets/educativo/servilleta-final.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
+.papel_higienico {
+    background-image: url(../assets/educativo/higienico-final.png);
+}
+
+/* ¡VERIFICA ESTA RUTA! */
 
 
 /* --- Contenedor del Botón --- */
 .contenedor-boton-jugar {
     display: flex;
     justify-content: center;
-    margin-top: 40px; /* Espacio superior */
+    margin-top: 40px;
+    /* Espacio superior */
     width: 100%;
 }
 
@@ -188,7 +276,7 @@
 }
 
 .boton-hora-de-jugar:hover:not(:disabled) {
-    background: linear-gradient(45deg,#103e58, #093a04 );
+    background: linear-gradient(45deg, #103e58, #093a04);
     box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
 }
 
@@ -196,27 +284,36 @@
     box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
 }
 
-   @media (min-width: 1200px) {
+
+@media (min-width: 1200px) {
     .contenedor-educativo {
-        top: -7%;   /* Ajusta el porcentaje desde arriba */
-        left: 55%;    /* Ajusta el porcentaje desde la izquierda */
-        width: 35%;   /* Ajusta el ancho */
-        height: 45%;  /* Ajusta el alto */
+        top: -6%;
+        /* Ajusta el porcentaje desde arriba */
+        left: 55%;
+        /* Ajusta el porcentaje desde la izquierda */
+        width: 35%;
+        /* Ajusta el ancho */
+        height: 45%;
+        /* Ajusta el alto */
 
         /* Asegúrate de que la transformación y el origen sigan siendo los adecuados si los ajustaste antes */
     }
-
-    
 }
 
 /* Nueva Media Query para un rango de tamaño específico donde ocurre el problema */
 /* AJUSTA el rango (min-width y max-width) para que coincida con el tamaño de ventana donde ves el error */
-@media (min-width: 800px) and (max-width: 1199px) { /* Este es un rango de ejemplo */
+@media (min-width: 800px) and (max-width: 1199px) {
+
+    /* Este es un rango de ejemplo */
     .contenedor-educativo {
-        top: -3%;    /* AJUSTA */
-        left: 55%;   /* AJUSTA - Menor que 53% para moverlo a la izquierda */
-        width: 37%;  /* AJUSTA */
-        height: 42%; /* AJUSTA */
+        top: -3%;
+        /* AJUSTA */
+        left: 55%;
+        /* AJUSTA - Menor que 53% para moverlo a la izquierda */
+        width: 37%;
+        /* AJUSTA */
+        height: 42%;
+        /* AJUSTA */
         transform-origin: 0% 100%;
     }
 }
@@ -228,38 +325,46 @@
     .contenedor-educativo {
         /* Ajustes más significativos para pantallas pequeñas */
         top: 3%;
-        left: 59%; /* Quizás la valla está más a la izquierda en pantallas pequeñas */
+        left: 59%;
+        /* Quizás la valla está más a la izquierda en pantallas pequeñas */
         width: 42%;
         height: 37%;
     }
 
     .contenedor-educativo-content {
-         padding: 1em 0.8em;
+        padding: 1em 0.8em;
     }
 
     .titulo-educativo-resumido h2 {
-        font-size: 1.5em; /* Reduce el tamaño del título */
+        font-size: 1.5em;
+        /* Reduce el tamaño del título */
     }
 
     .titulo-educativo-resumido p {
-        font-size: 1em; /* Reduce el tamaño del párrafo */
+        font-size: 1em;
+        /* Reduce el tamaño del párrafo */
     }
 
-     .secciones-residuos-contenedor {
-        flex-direction: column; /* Apila las secciones verticalmente */
-        gap: 15px; /* Espacio entre secciones apiladas */
+    .secciones-residuos-contenedor {
+        flex-direction: column;
+        /* Apila las secciones verticalmente */
+        gap: 15px;
+        /* Espacio entre secciones apiladas */
     }
 
     .seccion-residuos-organicos,
     .seccion-residuos-aprovechables,
     .seccion-residuos-no-aprovechables {
-        width: 90%; /* Las secciones ocupan más ancho cuando están apiladas */
-        margin: 0 auto; /* Centra las secciones apiladas */
+        width: 90%;
+        /* Las secciones ocupan más ancho cuando están apiladas */
+        margin: 0 auto;
+        /* Centra las secciones apiladas */
     }
 
 
     .boton-hora-de-jugar {
-        font-size: 1em; /* Reduce el tamaño del botón */
+        font-size: 1em;
+        /* Reduce el tamaño del botón */
         padding: 0.6em 1em;
     }
 }

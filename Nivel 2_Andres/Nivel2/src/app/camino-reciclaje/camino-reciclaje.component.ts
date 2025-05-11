@@ -7,7 +7,7 @@ interface Basura {
   x: number;
   y: number;
   recogida: boolean;
-  color: 'verde' | 'negra' | 'blanca';
+  color: 'Organico' | 'No Aprovechable' | 'Aprovechable';
   isCarried: boolean;
   imageSrc?: string; // <--- Si usaste esta propiedad para el background-image
 
@@ -36,9 +36,9 @@ export class CaminoReciclajeComponent implements OnInit {
 
 
   readonly binAreas = [
-    { type: 'verde', x: 120, y: 280, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
-    { type: 'negra', x: 605, y: 287, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
-    { type: 'blanca', x: 1045, y: 297, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
+    { type: 'Organico', x: 120, y: 280, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
+    { type: 'No Aprovechable', x: 605, y: 287, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
+    { type: 'Aprovechable', x: 1045, y: 297, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
   ];
 
 
@@ -58,7 +58,7 @@ export class CaminoReciclajeComponent implements OnInit {
   }
 
   generarBasuras(): void {
-    const colores: ('verde' | 'negra' | 'blanca')[] = ['verde', 'negra', 'blanca'];
+    const colores: ('Organico' | 'No Aprovechable' | 'Aprovechable')[] = ['Organico', 'No Aprovechable', 'Aprovechable'];
     // CAMBIAR a 15 basuras en total (5 de cada color)
     const cantidadPorColor = 5;
 
@@ -98,19 +98,19 @@ export class CaminoReciclajeComponent implements OnInit {
 
 
   readonly basuraImageMap: { [key in Basura['color']]: string[] } = {
-    'verde': [
+    'Organico': [
       'assets/educativo/cascara-banana3.png', // ¡Sin el ../ !
       'assets/educativo/manzana1.png',       // ¡Sin el ../ !
       'assets/educativo/hueso-final2.png'    // ¡Sin el ../ !
     ],
-    'negra': [
+    'No Aprovechable': [
       'assets/educativo/servilleta-final.png', // ¡Sin el ../ !
       'assets/educativo/higienico-final.png',    // ¡Sin el ../ !
     ],
-    'blanca': [
+    'Aprovechable': [
       'assets/educativo/lata-bebida-final.png', // ¡Sin el ../ !
       'assets/educativo/carton-final.png',  // ¡Sin el ../ !
-      'assets/educativo/papel-final.png'     // ¡Sin el ../ !
+      'assets/educativo/papel-final.jpg'     // ¡Sin el ../ !
     ],
   };
 
@@ -161,7 +161,7 @@ export class CaminoReciclajeComponent implements OnInit {
             basura.isCarried = true; // Marcarla como llevada
             this.carriedBasura = basura; // Asignarla al personaje
             // basura.recogida = true; // <--- QUITAR ESTO. La basura NO desaparece al recogerla
-            console.log(`Recogiste una basura ${basura.color}`);
+            alert(`Recogiste una basura ${basura.color}`);
             // Salir del bucle, el personaje solo puede llevar una basura a la vez
             break;
           }
@@ -180,9 +180,6 @@ export class CaminoReciclajeComponent implements OnInit {
 
 
       for (const bin of this.binAreas) {
-        console.log('Verificando colisión con caneca:', bin.type, 'en coords:', bin.x, bin.y, bin.width, bin.height);
-        console.log('Posición Personaje (centro aproximado de la basura):', this.personajeX, this.personajeY); // Usa las coords del personaje para la colisión
-
         const colisionX = this.personajeX < bin.x + bin.width && this.personajeX + this.personajeWidth > bin.x;
         const colisionY = this.personajeY < bin.y + bin.height && this.personajeY + this.personajeHeight > bin.y;
 
@@ -192,12 +189,12 @@ export class CaminoReciclajeComponent implements OnInit {
           console.log(`¡Colisión detectada con caneca ${bin.type}!`);
           console.log(`Comparando color basura "${this.carriedBasura.color}" con tipo caneca "${bin.type}"`); // ¿Son idénticos?
           if (this.carriedBasura.color === bin.type) {
-            console.log('¡¡¡CLASIFICACIÓN CORRECTA!!! Estableciendo recogida = true');
+            alert('¡¡¡CLASIFICACIÓN CORRECTA SIGUE ASI!!!');
             this.carriedBasura.recogida = true; // Esta es la línea clave
             droppedCorrectly = true;
             break;
           } else {
-            console.log('Clasificación Incorrecta.');
+            alert('Clasificación Incorrecta.');
           }
         }
       }
