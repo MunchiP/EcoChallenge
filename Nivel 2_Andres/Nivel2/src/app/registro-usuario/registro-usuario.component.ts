@@ -3,23 +3,25 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../usuario.service'; // <-- 1. Importa tu servicio
-
+import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registro-usuario',
   standalone: true,
   imports: [
        CommonModule,
-       ReactiveFormsModule
+       ReactiveFormsModule, HttpClientModule,
   ],
   templateUrl: './registro-usuario.component.html',
-  styleUrls: ['./registro-usuario.component.css']
+  styleUrls: ['./registro-usuario.component.css'],
+  providers: [UsuarioService]
 })
 export class RegistroUsuarioComponent implements OnInit {
 
   registroForm!: FormGroup; // Usa '!' para indicar que se inicializará en ngOnInit o constructor
 
   // Inyecta FormBuilder y tu UsuarioService
-  constructor(private fb: FormBuilder, private usuarioService: UsuarioService) { // <-- 2. Inyecta el servicio
+  constructor(private fb: FormBuilder, private usuarioService: UsuarioService, private router: Router) { // <-- 2. Inyecta el servicio
     // Puedes inicializar aquí también si prefieres:
     this.registroForm = this.fb.group({});
   }
@@ -44,6 +46,7 @@ export class RegistroUsuarioComponent implements OnInit {
           // Esto se ejecuta si la petición POST fue exitosa (ej. código 200, 201)
           console.log('✅ Registro exitoso:', respuestaBackend);
           alert('¡Registro exitoso!');
+          this.router.navigate(['/educativo1']);
           // Aquí podrías redirigir al usuario a otra página,
           // mostrar un mensaje de éxito en la interfaz, etc.
           this.registroForm.reset(); // Opcional: resetear el formulario después de éxito
