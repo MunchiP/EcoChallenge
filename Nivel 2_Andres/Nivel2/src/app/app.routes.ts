@@ -1,11 +1,5 @@
-import { NgModule } from '@angular/core';
+
 import { RouterModule, Routes } from '@angular/router';
-
-// Importar Providers
-
-import { ApplicationConfig } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http'; // <-- 1. Importa esto
 
 
 // Componentes
@@ -23,18 +17,3 @@ export const routes: Routes = [
 
 
 ];
-//Providers
-
-export const appConfig: ApplicationConfig = {
-  providers: [
-    provideRouter(routes),
-    provideHttpClient() // <-- 2. Añade esta función al array de providers
-  ]
-};
-
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
