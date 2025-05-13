@@ -1,6 +1,5 @@
 <div class="fullscreen-video-container">
-    <video controls autoplay loop muted class="fullscreen-video">
-      <source src="assets/InicioEco.mp4" type="video/mp4">
-      Tu navegador no soporta la etiqueta de video.
-    </video>
-  </div>
+  <video autoplay muted (ended)="onVideoEnd()" class="fullscreen-video">
+    <source src="assets/InicioEco.mp4" type="video/mp4">
+  </video>
+</div>

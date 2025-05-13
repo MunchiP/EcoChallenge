@@ -1,0 +1,169 @@
+/* .Importo la fuente de google fonts */
+
+.fondo{
+  background-image: url(../../../../public/assets/3_Juego/juego_3.png);
+  background-size: cover;   
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; 
+
+  z-index: -1; 
+
+}
+
+.Titulo
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  font-family: "Englebert", cursive;
+  color: rgb(60, 180, 180);
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.englebert-regular {
+    font-family: "Englebert", cursive;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  p{
+    font-family: 'Englebert';
+    font-size: 1.2rem;
+  }
+
+  /* Iconos de audio Angular - Material */
+  .AudiosIconos {
+    width: 50px;
+    height: 50px;
+    color: rgb(71, 251, 179);
+    background-color: blue;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btnJuego {
+    width: 180px;
+    height: 90px;
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(44, 188, 154);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* // Formas de estilo para la primera parte */
+
+  /* Estilos de división general */
+
+  .ContenidoGeneral {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; /* Permite responsividad */
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 100vw;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    gap: 2rem;
+    /* padding: 1rem; */
+  }
+  
+
+  .ContenidoIzquierdo {
+    flex: 1 1 45%;
+    max-width: 45%;
+    background-color: rgba(68, 255, 0, 0.1);
+    box-sizing: border-box;
+  }
+
+  .ContenidoDerecho {
+    flex: 1 1 45%;
+    max-width: 45%;
+    background-color: rgba(255, 0, 187, 0.1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .ContenidoIzquierdo .ContenidoDerecho{
+    flex: 1 1 auto;
+  }
+
+  .izquierda, .derecha {
+    flex: 1 1 45%;
+    padding: 1rem;
+    box-sizing: border-box;
+  }
+
+  .InfoUno,
+  .InfoDos,
+  .InfoTres {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  
+  .GifLow {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .GifLow.Escena1{
+    height: 250px;
+  }
+
+  .GifLow.Escena2{
+    height: 350px;
+  }
+
+  .GifLow.Escena3{
+    height: 350px;
+  }
+
+
+  /* Responsive para tablets */
+@media (max-width: 991px) {
+  .ContenidoGeneral {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .ContenidoIzquierdo,
+  .ContenidoDerecho {
+    max-width: 100%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .InfoUno, .InfoDos, .InfoTres {
+    flex-direction: column;
+  }
+
+  .izquierda, .derecha {
+    flex: 1 1 100%;
+    padding: 0.5rem;
+  }
+}
