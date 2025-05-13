@@ -83,6 +83,7 @@
   margin-bottom: 20px;
 }
 
+/* Contenedor del botón (tus estilos actuales) */
 .boton-nivel3 {
   width: 700px;
   order: -1;
@@ -93,52 +94,59 @@
   box-sizing: border-box;
 }
 
-
 /* Estilos principales del botón */
 .boton-nivel3 button {
   padding: 0.8em 1.5em;
   font-size: 1.2em;
   border-radius: 18px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); Removido aquí para definirlo por estado */
   font-family: var(--fuente-principal);
-  color: white;
+  /* color: rgb(65, 65, 65); Removido aquí para definirlo por estado */
   border: none;
-  cursor: pointer;
+  /* cursor: pointer; Removido aquí para definirlo por estado */
   font-weight: bold;
   letter-spacing: 1px;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.3s ease; /* Transición para cambios suaves */
   width: 200px;
   box-sizing: border-box;
+  display: flex; /* Añadido para centrar contenido si es necesario */
+  align-items: center; /* Añadido para centrar contenido verticalmente */
+  justify-content: center; /* Añadido para centrar contenido horizontalmente */
 }
 
 /* Estilos cuando el botón está habilitado (no disabled) */
 .boton-nivel3 button:not(:disabled) {
-  background: linear-gradient(45deg, #3792c7, #3bff25);
-  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5);
+  background: linear-gradient(45deg, #3792c7, #3bff25); /* Tu degradado */
+  color: rgb(65, 65, 65); /* Color de texto para estado habilitado */
+  box-shadow: 0 6px 15px rgba(42, 90, 125, 0.5); /* Tu sombra */
+  cursor: pointer; /* Cursor de puntero */
 }
 
 /* --- Efecto Hover (al pasar el ratón) --- */
 .boton-nivel3 button:hover:not(:disabled) {
-  background: linear-gradient(45deg, #175a0f, #1e6086);
-  box-shadow: 0 8px 20px rgba(42, 90, 125, 0.6);
-  transform: translateY(-3px);
+  background: linear-gradient(45deg, #175a0f, #1e6086); /* Tu degradado en hover */
+  box-shadow: 0 8px 20px rgba(42, 90, 125, 0.6); /* Tu sombra en hover */
+  transform: translateY(-3px); /* Tu efecto de elevación */
 }
-
 
 /* Estado Activo (al hacer clic) */
 .boton-nivel3 button:active:not(:disabled) {
-  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4);
-  transform: translateY(1px);
+  box-shadow: 0 2px 5px rgba(42, 90, 125, 0.4); /* Tu sombra en activo */
+  transform: translateY(1px); /* Tu efecto de hundimiento */
 }
 
-/* Optional: Estilos para el estado disabled (si aplica) */
+/* --- Estilos para el estado disabled (deshabilitado) --- */
 .boton-nivel3 button:disabled {
-  opacity: 0.6;
-  /* Reducir opacidad */
-  cursor: not-allowed;
-  /* Cambiar cursor */
+  background-color: #cccccc; /* Un gris claro */
+  background-image: none; /* Asegura que no tenga degradado */
+  color: #888888; /* Un gris más oscuro para el texto */
+  box-shadow: none; /* Sin sombra para que se vea plano */
+  cursor: not-allowed; /* Cursor de prohibido */
+  opacity: 1; /* Mantenemos la opacidad normal para que el color sea el indicador principal */
+  filter: grayscale(50%); /* Opcional: aplica un filtro de escala de grises */
 }
+
 
 .game-wrapper {
   /* Mantener */

@@ -1,6 +1,7 @@
-import { Component, HostListener, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'; // <--- Añadido NgZone
+import { Component, HostListener, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+// Importa Router si planeas navegar a otra ruta
+// import { Router } from '@angular/router';
 
 
 interface Basura {
@@ -9,49 +10,47 @@ interface Basura {
   recogida: boolean;
   color: 'Organico' | 'No Aprovechable' | 'Aprovechable';
   isCarried: boolean;
-  imageSrc?: string; // <--- Si usaste esta propiedad para el background-image
-
+  imageSrc?: string;
 }
 
 @Component({
   selector: 'app-camino-reciclaje',
   templateUrl: './camino-reciclaje.component.html',
   styleUrls: ['./camino-reciclaje.component.css'],
-  standalone: true, // <--- Añade esto para marcarlo como Standalone
+  standalone: true,
   imports: [CommonModule]
 })
 export class CaminoReciclajeComponent implements OnInit {
   personajeX = 50;
   personajeY = 50;
-  personajeWidth = 50; // Coincide con CSS .personaje width
-  personajeHeight = 50; // Coincide con CSS .personaje height
+  personajeWidth = 50;
+  personajeHeight = 50;
 
   basuras: Basura[] = [];
-  carriedBasura: Basura | null = null; // <--- AÑADIDO: Referencia a la basura que el personaje lleva
+  carriedBasura: Basura | null = null;
 
   readonly gameAreaWidth = 1280;
   readonly gameAreaHeight = 720;
-  readonly basuraWidth = 30; // Coincide con CSS .basura width
-  readonly basuraHeight = 30; // Coincide con CSS .basura height
+  readonly basuraWidth = 30;
+  readonly basuraHeight = 30;
 
+  totalBasuras = 0;
+  basurasRecogidas = 0;
+  juegoTerminado = false;
 
   readonly binAreas = [
-    { type: 'Organico', x: 120, y: 280, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
-    { type: 'No Aprovechable', x: 605, y: 287, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
-    { type: 'Aprovechable', x: 1045, y: 297, width: 125, height: 125 }, // Revisa estas dimensiones si son diferentes
+    { type: 'Organico', x: 120, y: 280, width: 125, height: 125 },
+    { type: 'No Aprovechable', x: 605, y: 287, width: 125, height: 125 },
+    { type: 'Aprovechable', x: 1045, y: 297, width: 125, height: 125 },
   ];
-
 
   @ViewChild('gameContainer') gameContainer!: ElementRef<HTMLDivElement>;
 
-  // Variable para la suscripción de resize (si se descomenta)
-  // private resizeSubscription!: Subscription;
-
-  // Inyecta NgZone en el constructor
-  constructor(private zone: NgZone) { }
-
-
-
+  // Inyecta NgZone y Router (si lo usas) en el constructor
+  constructor(
+    private zone: NgZone
+    // private router: Router // Descomentar si usas Router para navegar
+  ) { }
 
   ngOnInit(): void {
     this.generarBasuras();
@@ -59,7 +58,6 @@ export class CaminoReciclajeComponent implements OnInit {
 
   generarBasuras(): void {
     const colores: ('Organico' | 'No Aprovechable' | 'Aprovechable')[] = ['Organico', 'No Aprovechable', 'Aprovechable'];
-    // CAMBIAR a 15 basuras en total (5 de cada color)
     const cantidadPorColor = 5;
 
     const maxX = this.gameAreaWidth - this.basuraWidth;
@@ -67,56 +65,56 @@ export class CaminoReciclajeComponent implements OnInit {
 
     this.basuras = [];
 
-    // Generar 5 basuras de cada color
+    this.totalBasuras = 0;
+    this.basurasRecogidas = 0;
+    this.juegoTerminado = false;
+
+
     colores.forEach(color => {
-      // Para cada color, genera la cantidad especificada de basuras
       for (let i = 0; i < cantidadPorColor; i++) {
-        // --- Lógica para seleccionar una imagen aleatoria para este color ---
-        // 1. Obtén el array de imágenes disponibles para el color actual desde basuraImageMap
         const imagesForColor = this.basuraImageMap[color];
-        // 2. Selecciona un índice aleatorio dentro del rango de ese array
         const randomIndex = Math.floor(Math.random() * imagesForColor.length);
-        // 3. Obtén la ruta de la imagen usando el índice aleatorio
         const randomImageSrc = imagesForColor[randomIndex];
-        // -------------------------------------------------------------------
-  
-        // Crea el nuevo objeto basura y añádelo al array this.basuras
+
         this.basuras.push({
-          x: Math.floor(Math.random() * maxX), // Posición X aleatoria dentro de los límites
-          y: Math.floor(Math.random() * maxY), // Posición Y aleatoria dentro de los límites
-          recogida: false, // Inicialmente no está recogida
-          color: color, // Asigna el color actual del bucle
-          isCarried: false, // Inicialmente no está siendo llevada por el personaje
-          imageSrc: randomImageSrc // Asigna la ruta de la imagen seleccionada aleatoriamente
+          x: Math.floor(Math.random() * maxX),
+          y: Math.floor(Math.random() * maxY),
+          recogida: false,
+          color: color,
+          isCarried: false,
+          imageSrc: randomImageSrc
         });
+
+          this.totalBasuras++;
       }
     });
 
-
     console.log('Basuras generadas:', this.basuras);
+    console.log('Total de basuras a recoger:', this.totalBasuras);
   }
-
 
   readonly basuraImageMap: { [key in Basura['color']]: string[] } = {
     'Organico': [
-      'assets/cascara-banana3.png', // ¡Sin el ../ !
-      'assets/manzana1.png',       // ¡Sin el ../ !
-      'assets/educativo/hueso-final2.png'    // ¡Sin el ../ !
+      'assets/educativo/cascara-banana3.png',
+      'assets/educativo/manzana1.png',
+      'assets/educativo/hueso-final2.png'
     ],
     'No Aprovechable': [
-      'assets/servilleta-final.png', // ¡Sin el ../ !
-      'assets/higienico-final.png',    // ¡Sin el ../ !
+      'assets/educativo/servilleta-final.png',
+      'assets/educativo/higienico-final.png',
     ],
     'Aprovechable': [
-      'assetslata-bebida-final.png', // ¡Sin el ../ !
-      'assets/carton-final.png',  // ¡Sin el ../ !
-      'assets/papel-final.jpg'     // ¡Sin el ../ !
+      'assets/educativo/lata-bebida-final.png',
+      'assets/educativo/carton-final.png',
+      'assets/educativo/papel-final.jpg'
     ],
   };
 
-
-  // --- moverPersonaje AHORA incluye la actualización de posición ---
   moverPersonaje(event: KeyboardEvent): void {
+    if (this.juegoTerminado) {
+        return;
+    }
+
     const velocidad = 10;
     let newX = this.personajeX;
     let newY = this.personajeY;
@@ -129,12 +127,10 @@ export class CaminoReciclajeComponent implements OnInit {
       default: return;
     }
 
-    // Actualiza la posición con límites
     this.personajeX = Math.max(0, Math.min(newX, this.gameAreaWidth - this.personajeWidth));
     this.personajeY = Math.max(0, Math.min(newY, this.gameAreaHeight - this.personajeHeight));
 
     if (this.carriedBasura) {
-      // Ajusta estos offsets si quieres que la basura aparezca en otro lugar respecto al personaje
       const offsetX = 10;
       const offsetY = 10;
       this.carriedBasura.x = this.personajeX + offsetX;
@@ -145,11 +141,8 @@ export class CaminoReciclajeComponent implements OnInit {
   }
 
   detectarColisiones(): void {
-    // Solo detectar colisiones con basuras si el personaje NO ESTÁ LLEVANDO NADA
-    if (this.carriedBasura === null) {
+    if (this.carriedBasura === null && !this.juegoTerminado) {
       for (const basura of this.basuras) {
-        // Colisionar solo con basuras que NO han sido recogidas (correctamente clasificadas)
-        // y que NO están siendo llevadas actualmente por alguien (aunque solo hay 1 personaje)
         if (!basura.recogida && !basura.isCarried) {
           const colisionX = this.personajeX < basura.x + this.basuraWidth &&
             this.personajeX + this.personajeWidth > basura.x;
@@ -157,61 +150,94 @@ export class CaminoReciclajeComponent implements OnInit {
             this.personajeY + this.personajeHeight > basura.y;
 
           if (colisionX && colisionY) {
-            // ¡Colisión detectada con una basura disponible! Recogerla.
-            basura.isCarried = true; // Marcarla como llevada
-            this.carriedBasura = basura; // Asignarla al personaje
-            // basura.recogida = true; // <--- QUITAR ESTO. La basura NO desaparece al recogerla
-            alert(`Recogiste una basura ${basura.color}`);
-            // Salir del bucle, el personaje solo puede llevar una basura a la vez
+            basura.isCarried = true;
+            this.carriedBasura = basura;
             break;
           }
         }
       }
     }
-    // Si ya lleva una basura, no hacemos nada en esta función de detección de colisiones con basuras
   }
 
   soltarBasura(): void {
-    if (this.carriedBasura) {
+    if (this.carriedBasura && !this.juegoTerminado) {
       console.log('Intentando soltar basura...');
-      console.log('Basura llevada:', this.carriedBasura); // ¿Es realmente la banana?
+      console.log('Basura llevada:', this.carriedBasura);
       let droppedCorrectly = false;
-
-
 
       for (const bin of this.binAreas) {
         const colisionX = this.personajeX < bin.x + bin.width && this.personajeX + this.personajeWidth > bin.x;
         const colisionY = this.personajeY < bin.y + bin.height && this.personajeY + this.personajeHeight > bin.y;
 
-        console.log(`Colisión calculada con ${bin.type}: X=${colisionX}, Y=${colisionY}`); // ¿Ambos son TRUE cuando sueltas sobre la caneca?
+        console.log(`Colisión calculada con ${bin.type}: X=${colisionX}, Y=${colisionY}`);
 
         if (colisionX && colisionY) {
           console.log(`¡Colisión detectada con caneca ${bin.type}!`);
-          console.log(`Comparando color basura "${this.carriedBasura.color}" con tipo caneca "${bin.type}"`); // ¿Son idénticos?
+          console.log(`Comparando color basura "${this.carriedBasura.color}" con tipo caneca "${bin.type}"`);
           if (this.carriedBasura.color === bin.type) {
             alert('¡¡¡CLASIFICACIÓN CORRECTA SIGUE ASI!!!');
-            this.carriedBasura.recogida = true; // Esta es la línea clave
+            this.carriedBasura.recogida = true;
             droppedCorrectly = true;
+
+            this.basurasRecogidas++;
+            console.log(`Basuras recogidas: ${this.basurasRecogidas}/${this.totalBasuras}`);
+
+            if (this.basurasRecogidas === this.totalBasuras) {
+              this.juegoTerminado = true;
+              this.finalizarJuego();
+            }
+
             break;
           } else {
             alert('Clasificación Incorrecta.');
+             // Opcional: podrías no marcarla como recogida y dejarla caer en una posición cercana
+             // this.carriedBasura.x = this.personajeX + 20; // Ejemplo: la deja caer cerca
+             // this.carriedBasura.y = this.personajeY + 20; // Ejemplo: la deja caer cerca
           }
         }
       }
-      this.carriedBasura.isCarried = false;
-      this.carriedBasura = null;
+        // Independientemente de si fue correcta o no, la basura ya no se lleva
+        this.carriedBasura.isCarried = false;
+        this.carriedBasura = null;
     }
   }
+
+  finalizarJuego(): void {
+      this.zone.run(() => {
+          alert('¡Felicidades! Has clasificado toda la basura correctamente.');
+          console.log('¡Juego Terminado!');
+          // Aquí puedes añadir lógica adicional, como habilitar el botón de Nivel 3
+          // o mostrar un mensaje en pantalla.
+      });
+  }
+
+  // --- NUEVO MÉTODO PARA MANEJAR EL CLIC DEL BOTÓN IR A NIVEL 3 ---
+  irANivel3(): void {
+    if (this.juegoTerminado) {
+      // Aquí pones la lógica para ir al Nivel 3
+      alert('¡Pasando al Nivel 3!');
+      console.log('Navegando al Nivel 3...');
+      // Ejemplo de navegación usando Angular Router:
+      // this.router.navigate(['/nivel3']);
+    } else {
+      alert('¡Aún hay basura por clasificar! Completa el nivel actual.');
+    }
+  }
+  // ---------------------------------------------------------------
 
 
   @HostListener('window:keydown', ['$event'])
   onKeyPress(event: KeyboardEvent) {
+    if (this.juegoTerminado) {
+        return;
+    }
+
     if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
-      event.preventDefault(); // Evitar que las flechas hagan scroll
-      this.moverPersonaje(event); // Mover al personaje y la basura si la lleva
-    } else if (event.key === ' ') { // <--- AÑADIDO: Tecla Espacio para soltar
-      event.preventDefault(); // Evitar scroll si la barra espaciadora lo causa
-      this.soltarBasura(); // Llamar al método soltarBasura
+      event.preventDefault();
+      this.moverPersonaje(event);
+    } else if (event.key === ' ') {
+      event.preventDefault();
+      this.soltarBasura();
     }
   }
 }
