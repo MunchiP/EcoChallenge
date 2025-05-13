@@ -99,18 +99,18 @@ export class CaminoReciclajeComponent implements OnInit {
 
   readonly basuraImageMap: { [key in Basura['color']]: string[] } = {
     'Organico': [
-      'assets/educativo/cascara-banana3.png', // ¡Sin el ../ !
-      'assets/educativo/manzana1.png',       // ¡Sin el ../ !
+      'assets/cascara-banana3.png', // ¡Sin el ../ !
+      'assets/manzana1.png',       // ¡Sin el ../ !
       'assets/educativo/hueso-final2.png'    // ¡Sin el ../ !
     ],
     'No Aprovechable': [
-      'assets/educativo/servilleta-final.png', // ¡Sin el ../ !
-      'assets/educativo/higienico-final.png',    // ¡Sin el ../ !
+      'assets/servilleta-final.png', // ¡Sin el ../ !
+      'assets/higienico-final.png',    // ¡Sin el ../ !
     ],
     'Aprovechable': [
-      'assets/educativo/lata-bebida-final.png', // ¡Sin el ../ !
-      'assets/educativo/carton-final.png',  // ¡Sin el ../ !
-      'assets/educativo/papel-final.jpg'     // ¡Sin el ../ !
+      'assetslata-bebida-final.png', // ¡Sin el ../ !
+      'assets/carton-final.png',  // ¡Sin el ../ !
+      'assets/papel-final.jpg'     // ¡Sin el ../ !
     ],
   };
 
