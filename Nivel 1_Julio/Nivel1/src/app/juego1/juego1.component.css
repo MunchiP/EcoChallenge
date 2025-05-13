@@ -1,14 +1,15 @@
 
 .juego-container {
-  background-image: url('/assets/juego.png'); 
+  background-image: url('/assets/juego.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
   min-height: 100vh;
   width: 100%;
-  position: absolute; top: 0; left: 0; min-height: 100vh; width: 100%; z-index: -1;
+  position: absolute; /* ¡Añadimos position: relative! */
   top: 0;
   left: 0;
+  z-index: -1; /* Lo mantenemos detrás de otros elementos */
 }
 .draggable-item {
   width: 15vw; 
@@ -146,6 +147,19 @@ button {
 button:hover {
   background-color: #218838;
 }
+/* .gif {
+  width: 800px;
+  height: 350px;
+  z-index: 10;
+  background-image: url('/assets/Twist_c.gif');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 80px;
+  opacity: 0.7;
+  max-width: 100%;
+  margin-bottom: 20px;
+} */
 
 @media (min-width: 768px) {
   button {

@@ -1,7 +1,9 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { DragDropModule, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { CommonModule } from '@angular/common';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+
 interface DraggableItem {
   id: string;
   imageUrl: string;
@@ -10,7 +12,7 @@ interface DraggableItem {
 @Component({
   selector: 'app-drag-boundary',
   standalone: true,
-  imports: [DragDropModule, NgIf],
+  imports: [DragDropModule, NgIf, CommonModule],
   templateUrl: './juego1.component.html',
   styleUrl: './juego1.component.css',
 })
@@ -49,7 +51,7 @@ export class Juego1component implements AfterViewInit {
     this.dropped['objeto-4'] = false;
     this.dropped['objeto-5'] = false;
   }
-  
+
 
   ngAfterViewInit(): void {
     if (typeof document !== 'undefined') {
@@ -86,7 +88,8 @@ export class Juego1component implements AfterViewInit {
   }
 
   correctTargets: { [key: string]: string } = {
-    'objeto-1': 'target1', 
+    'objeto-1': 'target1',
+    'objeto-2': 'target1',
     'objeto-3': 'target1',
     'objeto-4': 'target1',
     'objeto-5': 'target2',
@@ -128,7 +131,17 @@ export class Juego1component implements AfterViewInit {
     );
   }
 
+  canGoToJuego2(): boolean {
+    // Check if all draggable items have been dropped and placed correctly
+    return Object.keys(this.draggableItems).every(itemId => this.dropped[itemId] && this.isCorrect[itemId] === 'correct');
+  }
+
   GoJuego2() {
-    this.router.navigate(['/juego2']);
+    if (this.canGoToJuego2()) {
+      this.router.navigate(['/educativo2']);
+    } else {
+      alert('Debes completar este juego para poder avanzar al siguiente.');
+      
+    }
   }
 }
